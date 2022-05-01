@@ -1,18 +1,22 @@
+/*Hacer un programa que, utilizando vectores, cargue 10 números 
+enteros ingresados por el usuario e imprima en pantalla la sumatoria de ellos.*/
+
 #include <stdio.h>
-#include <stdlib.h>
-#define CANTIDAD 10
+#include <string.h>
+#define NUMEROS 10
 main()
 {
-int numero[10];
-int suma=0;
+	int numeros[10],n;
+	int suma=0;
+	
+	printf("Ingresar 10 numeros:\n");
+	for(int i=1;i<=10;i++)
+	{
+		scanf("%i",numeros);
+		suma+=numeros[n]; 
+	}
+	
+	printf("La suma de los numeros es: %i",suma);
+    return 0;
 
-printf("ingresar 10 numeros \n");
-{scanf("%i",&numero);
-for(int i=0;i<=CANTIDAD;i+1)
-{
-suma=suma+numero[i];
 }
-}
-printf("\n la suma es: %i",suma);
-printf("\n");
-system("pause"),
