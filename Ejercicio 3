@@ -1,0 +1,56 @@
+/*Hacer un programa, que ordene a la matríz del Ejemplo 2 por orden ascendente y descendente 
+según: Nombre, Código o Cantidad dependiendo de la elección del usuario*/
+
+#include <stdio.h>
+#include <string.h>
+
+#define CANTIDAD 3
+#define COLUMNAS 4
+#define LONGITUD 20
+
+typedef enum{
+	nombre,       //columna 0
+	cantidad,     //columna 1
+	precio,       //columna 2
+	codigo        //columna 3
+   }columnas_t;
+main(void)
+{ 
+   unsigned char productos[CANTIDAD][COLUMNAS][LONGITUD],i;
+   columnas_t columnas;
+   
+   printf("Ingrese los productos: ");
+   for(i=0;i<CANTIDAD;i++)
+   {
+   	for(columnas = 0; columnas <COLUMNAS ; columnas++ )
+   	{ switch(columnas)
+   	{ case nombre:
+	   printf("Ingrese el nombre del producto: ");
+	   break;
+	   
+	 case cantidad:
+	  printf("Ingrese la cantidad: ");
+	  break;
+	  
+	 case precio:
+	 printf("Ingrese el precio: ");
+	 break;
+	 
+	 case codigo:
+	 printf("Ingrese el codigo: "); 
+	 break;
+}
+scanf("%s",&productos[i][columnas]);
+}
+}
+	printf("\tnombre\tcantidad\tprecio\tcodigo");
+	for(i=0;i<CANTIDAD;i++)	
+	{printf("\n\t");
+	for(columnas=0;columnas<COLUMNAS;columnas++)
+	{printf("%s \t",productos[i][columnas]);
+	}
+	}
+	printf("Gracias");
+	return 0;
+	
+}
