@@ -1,1 +1,34 @@
+/*Hacer un programa que, utilizando vectores, cargue 5 números inferiores a 100, ingresados por 
+el usuario, y los imprima en forma recursiva según orden de ingreso.*/
 
+#include <stdio.h>
+#include <string.h>
+#define NUMERO 5
+
+main()
+{
+int numeros[5],n,i,j;
+
+printf("Bienvenido, ingrese 5 numeros inferiores a 100:\n");
+
+    for (i=0;i<NUMERO;i++)
+{
+	    if(n<100)
+	    {
+	    scanf("%i",&n);
+	    numeros[i]=n;
+	    }
+	    if(n>100)
+	    {
+	    puts("ERROR, ingrese un numero menor a 100");
+	    scanf("%i",&n);	
+	    numeros[i]=n;
+	    }
+}       printf("\nLos numeros ingresados son: \n");
+        for(i=0;i<NUMERO;i++)
+        {
+         n=numeros[i];
+         printf("%i\n",n);
+        }
+        return 0;
+}
