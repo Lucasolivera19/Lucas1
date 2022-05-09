@@ -1,0 +1,100 @@
+/*Ejercicio 5: En un sistema de telemetría, se tiene un bus de datos serial con 4 dispositivos.
+ Cada uno de ellos tendrá una dirección conocida. Se pide diseñar una estructura de datos que 
+ contenga, direccion, comando y dato cada uno de ellos de 8 bits. Para simularlo el usuario ingresará los
+tres valores y el programa le imprimirá en pantalla la respuesta del dispositivo.*/
+
+#include "conf.h"
+
+int main{
+uint8_t int direcciones[] = {SENSOR_1_DIRECCION, SENSOR_2_DIRECCION, SENSOR_3_DIRECCION, SENSOR_4_DIRECCION};
+comunicacion_t mensaje;
+sensor_t sensores;
+uint8_t i, c ,seguir=1;
+
+
+for(i=0;i<CANTIDAD_SENSORES;i++){
+	sprintf(sensores[i].nombre,"sensor%d",i+1);
+	sensores[i].comm.direccion=direcciones[i];
+	sensores[i].medicion=1;
+	for(c=0;c<20;c++)
+	sensores[i].comandos[c]=0;
+	sensores[i].comandos[0]=AYUDA;
+	sensores[i].comandos[1]=GET;
+}
+sensores[i].comandos[2]=SET;
+
+for(i=0;i<CANTIDAD_SENSORES;i++)
+{
+	printf("%s, dir: %d, medicion: %d\n", sensores[i].nombre, sensores[i].comm.direccion, sesnores[i].medicion);
+}
+printf("Bienvenido al emulador\n\r");
+do{
+	printf("Ingrese la direccion del sensor: ");
+	scanf("%d", &mensaje.direccion);
+	
+	printf("Ingrese el comando: ");
+	scanf("%c",&mensaje.comando);
+	
+	printf("Ingrese el parametro: ");
+	scanf("%d", &mensaje.dato);
+	
+	printf("\nSe envia mensaje a direccion %d, comando %c, y dato %d\n",mensaje.direccion,mensaje.comando,mensaje.dato);
+	
+	i=0
+	while(mensaje.direccion != sensores[i].comm.direccion){
+		i++;
+		if(i=CANTIDAD_SENSORES) break;		
+	}
+	if(i=CANTIDAD_SENSORES){
+		printf("\nSensor no encontrado");
+	}
+	else{
+		printf("%s, Ejecuta %c\n", sensores[i].nombre, mensaje.comando);
+		switch(mensaje.comando){
+			case AYUDA:
+				printf("%s, Ejecuta AYUDA\n\r",sensores[i].nombre);
+				printf("El sensor %s, admite los comandos: ",sensores[i].nombre);
+				c=0;
+				while(sensores[i].comandos[c]!=0){
+					printf("%c",sensores[i].comandos[c]);
+					c++;
+				}break;
+			
+			case SET: 
+			c=0;
+			while(sensores[i].comandos[c]==SET){
+				sensores[i].medicion=mensaje.dato;
+				printf("Medicion actualizada en %s, valor:%d",sensores[i].nombre,sensores[i].medicion);
+				break;
+			}
+			c++	
+		}
+		if(sensores[i].comandos[c]==0)
+		printf("Comando desconocido por %s",sensores[i].nombre);
+		break;
+		
+		case GET:
+			c=0;
+			while(sensores[i].comandos[c]!=0){
+				if(sensores[i].comandos[c]==GET){
+					printf("Medicion en %s, valor: %d",sensores[i].nombre,sensores[i].medicion);
+					break;
+				}
+				c++
+			}
+			if(sensores[i].comandos[c])=0)
+			printf("Comando desconocido por %s",sensores[i].nombre);
+			break;
+			default:
+				printf("Comando desconocido: %c",mensaje.comando);
+				break;
+	}
+}
+
+fflush(stdin);
+printf("Desea salir? 1-Si  2-No");
+scanf("%d",&seguir);
+while(seguir==2);
+	
+return=0;
+}
