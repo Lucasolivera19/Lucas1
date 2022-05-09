@@ -1,0 +1,77 @@
+/*Ejercicio 4: En la Clase01/Ejemplo 2, realicé una matríz de productos. En el Ejercicio 3 propuse 
+ordenarla por columna a elección del usuario. Esto tenía un problema para ordenar los tipos de datos string que representaban números.
+El ejercicio 4 es entonces: rehacer el código utilizando estructuras. Hacer una Matriz estructura que contenga hasta 9 productos. 
+Cada fila de la matriz deberá contener Nombre, Cantidad, Precio y Código. Luego Imprimir en pantalla ordenandola por columna según la elección del usuario.*/
+
+#include <stdio.h>
+#include "def.h"
+
+#define PRODUCTOS 9
+#define CANTIDAD 9
+#define COLUMNAS 4
+#define LONGITUD 20
+
+int main()
+{
+
+	 char productos[CANTIDAD][COLUMNAS][LONGITUD],i,opcion,j,opc=1, aux[LONGITUD];
+	columnas_t columnas;
+	printf("Ingresar 9 productos: ");
+	for(i=0;i<CANTIDAD;i++)
+	{for(int columnas=0;columnas<COLUMNAS;columnas++)
+	{switch(columnas)
+	{case Nombre:
+		printf("\nIngrese el nombre del producto: ");
+		break;
+	case Cantidad:
+		printf("Ingrese la cantidad: ");
+		break;
+	case Precio:
+		printf("Ingrese el precio: ");
+		break;
+	case Codigo:
+		printf("Ingrese el codigo: ");
+		break;
+	}
+	scanf("%s",&productos[i][columnas]);
+	}
+	}
+	printf("\n\rNombre\tcantidad precio codigo");
+	for(i=0;i<CANTIDAD;i++)
+	{printf("\n\r");
+	for(int columnas=0;columnas<COLUMNAS;columnas++)
+	{printf("%s \r",productos[i][columnas]);
+	}
+	}
+	printf("\nEsta es la matriz que ingreso");
+	do{
+		printf("\n\r1-Nombre\n\r2-cantidad\n\r3-precio\n\r4-codigo\n\r5-salir\n\r");
+		printf("Elija la columna por la que desea ordenar: ");
+		scanf("%d",&opcion);
+		if(opcion==5)
+		{return 0;
+		}
+	for(i=1; i<CANTIDAD;i++)
+	{for(j=0;j<CANTIDAD-1;j++)
+	{if(strcmp(productos[j][opcion-1],productos[j+1][opcion-1])>=0)
+	{for(int columnas=0;columnas<COLUMNAS;columnas++)
+	{strcpy(aux,productos[j+1][columnas]);
+	strcpy(productos[j+1][columnas],productos[j][columnas]);
+	strcpy(productos[j][columnas],aux);
+	}
+	}
+	}
+	}
+	printf("\n\rNombre\tcantidad precio codigo");
+	for(i=0;i<CANTIDAD;i++)
+	{printf("\n\r");
+	for(int columnas=0;columnas<COLUMNAS;columnas++)
+	{printf("%s \r",productos[i][columnas]);
+}
+}
+printf("\n\r");
+}while(opcion=!5);
+printf("\n\rgracias!!\n");
+return 0;
+
+	}
